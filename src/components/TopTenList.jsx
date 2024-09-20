@@ -4,11 +4,11 @@ import StatusIcon from './StatusIcon';
 
 const TopTenList = () => {
   const [schools, setSchools] = useState([
-    { id: 'school1', name: 'University A', notes: [], offer: false, officialInvite: false, visit: false },
-    { id: 'school2', name: 'College B', notes: [], offer: false, officialInvite: false, visit: false },
-    { id: 'school3', name: 'Institute C', notes: [], offer: false, officialInvite: false, visit: false },
-    { id: 'school4', name: 'University D', notes: [], offer: false, officialInvite: false, visit: false },
-    { id: 'school5', name: 'College E', notes: [], offer: false, officialInvite: false, visit: false },
+    { id: 'school1', name: 'Cornell University', notes: [], offer: false, officialInvite: false, visit: false },
+    { id: 'school2', name: 'Tufts University', notes: [], offer: false, officialInvite: false, visit: false },
+    { id: 'school3', name: 'Dartmouth College', notes: [], offer: false, officialInvite: false, visit: false },
+    { id: 'school4', name: 'Union College', notes: [], offer: false, officialInvite: false, visit: false },
+    { id: 'school5', name: 'Brown University', notes: [], offer: false, officialInvite: false, visit: false },
   ]);
 
   const [selectedSchool, setSelectedSchool] = useState(null);
