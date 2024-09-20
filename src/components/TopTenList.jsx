@@ -70,19 +70,19 @@ const TopTenList = () => {
                         </div>
                         <div className="flex space-x-2">
                           <StatusIcon
+                            type="offer"
                             active={school.offer}
                             onClick={() => toggleStatus(school.id, 'offer')}
-                            title="Offer"
                           />
                           <StatusIcon
+                            type="officialInvite"
                             active={school.officialInvite}
                             onClick={() => toggleStatus(school.id, 'officialInvite')}
-                            title="Official Invite"
                           />
                           <StatusIcon
+                            type="visit"
                             active={school.visit}
                             onClick={() => toggleStatus(school.id, 'visit')}
-                            title="Visit"
                           />
                         </div>
                       </div>
