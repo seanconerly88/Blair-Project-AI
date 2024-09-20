@@ -10,9 +10,9 @@ const SocialMediaTracker = () => {
   return (
     <div className="bg-white rounded-lg shadow p-4">
       {socialPosts.map((post) => (
-        <div key={post.id} className="mb-4 p-3 border rounded">
-          <h3 className="font-semibold">{post.school}</h3>
-          <p className="text-sm text-gray-600">{post.platform}</p>
+        <div key={post.id} className="mb-4 p-3 border rounded hover:bg-purple-50">
+          <h3 className="font-semibold text-purple-800">{post.school}</h3>
+          <p className="text-sm text-purple-600">{post.platform}</p>
           <p className="mt-2">{post.content}</p>
         </div>
       ))}
