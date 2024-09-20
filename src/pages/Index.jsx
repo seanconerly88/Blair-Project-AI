@@ -16,7 +16,7 @@ const Index = () => {
         </div>
         <div className="flex flex-col">
           <h2 className="text-2xl font-semibold mb-4 text-purple-700">Social Radar</h2>
-          <div className="flex-grow">
+          <div className="flex-grow" style={{ height: 'calc(100vh - 16rem)' }}>
             <SocialMediaTracker />
           </div>
         </div>
