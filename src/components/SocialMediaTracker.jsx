@@ -11,7 +11,7 @@ const SocialMediaTracker = () => {
 
   return (
     <div className="bg-white rounded-lg shadow p-4 h-full flex flex-col">
-      <div className="flex-grow overflow-y-auto">
+      <div className="flex-grow overflow-y-auto" style={{ maxHeight: '400px' }}>
         {socialPosts.map((post) => (
           <div key={post.id} className="mb-4 p-3 border rounded hover:bg-purple-50">
             <h3 className="font-semibold text-purple-800">{post.school}</h3>
