@@ -66,7 +66,7 @@ const TopTenList = () => {
                     )}
                   </Draggable>
                   <div
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
                       selectedSchool && selectedSchool.id === school.id
                         ? 'max-h-96 opacity-100 mt-2'
                         : 'max-h-0 opacity-0'
