@@ -24,7 +24,8 @@ const TopTenList = () => {
   };
 
   const handleSchoolClick = (school) => {
-    setSelectedSchool(school);
+    setSelectedSchool(selectedSchool && selectedSchool.id === school.id ? null : school);
+    setNewNote('');
   };
 
   const handleAddNote = () => {
@@ -50,51 +51,52 @@ const TopTenList = () => {
           {(provided) => (
             <ul {...provided.droppableProps} ref={provided.innerRef} className="mb-4">
               {schools.map((school, index) => (
-                <Draggable key={school.id} draggableId={school.id} index={index}>
-                  {(provided) => (
-                    <li
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="p-4 border-b last:border-b-0 hover:bg-purple-100 cursor-move"
-                      onClick={() => handleSchoolClick(school)}
-                    >
-                      {index + 1}. {school.name}
+                <React.Fragment key={school.id}>
+                  <Draggable draggableId={school.id} index={index}>
+                    {(provided) => (
+                      <li
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className="p-4 border-b last:border-b-0 hover:bg-purple-100 cursor-move"
+                        onClick={() => handleSchoolClick(school)}
+                      >
+                        {index + 1}. {school.name}
+                      </li>
+                    )}
+                  </Draggable>
+                  {selectedSchool && selectedSchool.id === school.id && (
+                    <li className="p-4 bg-purple-100 rounded-lg mt-2 mb-2">
+                      <h3 className="font-semibold mb-2 text-purple-800">{selectedSchool.name} Notes</h3>
+                      <ul className="mb-4">
+                        {selectedSchool.notes.map((note) => (
+                          <li key={note.id} className="mb-2 p-2 bg-white rounded">{note.text}</li>
+                        ))}
+                      </ul>
+                      <div className="flex">
+                        <input
+                          type="text"
+                          value={newNote}
+                          onChange={(e) => setNewNote(e.target.value)}
+                          className="flex-grow p-2 border rounded-l"
+                          placeholder="Add a new note..."
+                        />
+                        <button
+                          onClick={handleAddNote}
+                          className="bg-purple-600 text-white px-4 py-2 rounded-r hover:bg-purple-700"
+                        >
+                          Add Note
+                        </button>
+                      </div>
                     </li>
                   )}
-                </Draggable>
+                </React.Fragment>
               ))}
               {provided.placeholder}
             </ul>
           )}
         </Droppable>
       </DragDropContext>
-
-      {selectedSchool && (
-        <div className="mt-4 p-4 bg-purple-100 rounded-lg">
-          <h3 className="font-semibold mb-2 text-purple-800">{selectedSchool.name} Notes</h3>
-          <ul className="mb-4">
-            {selectedSchool.notes.map((note) => (
-              <li key={note.id} className="mb-2 p-2 bg-white rounded">{note.text}</li>
-            ))}
-          </ul>
-          <div className="flex">
-            <input
-              type="text"
-              value={newNote}
-              onChange={(e) => setNewNote(e.target.value)}
-              className="flex-grow p-2 border rounded-l"
-              placeholder="Add a new note..."
-            />
-            <button
-              onClick={handleAddNote}
-              className="bg-purple-600 text-white px-4 py-2 rounded-r hover:bg-purple-700"
-            >
-              Add Note
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
