@@ -16,7 +16,7 @@ const Index = () => {
         </div>
         <div className="flex flex-col">
           <h2 className="text-2xl font-semibold mb-4 text-purple-700">Social Radar</h2>
-          <div className="h-[500px]"> {/* Adjusted height */}
+          <div className="h-[350px]"> {/* Adjusted height */}
             <SocialMediaTracker />
           </div>
         </div>
