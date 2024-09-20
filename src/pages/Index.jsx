@@ -1,11 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import TopTenList from '../components/TopTenList';
+import SocialMediaTracker from '../components/SocialMediaTracker';
+import SchoolNotes from '../components/SchoolNotes';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gray-100 p-8">
+      <h1 className="text-4xl font-bold mb-8 text-center">College Football Recruiting Dashboard</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Top 10 Schools</h2>
+          <TopTenList />
+        </div>
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Social Media Tracker</h2>
+          <SocialMediaTracker />
+        </div>
+      </div>
+      <div className="mt-8">
+        <h2 className="text-2xl font-semibold mb-4">School Notes</h2>
+        <SchoolNotes />
       </div>
     </div>
   );
