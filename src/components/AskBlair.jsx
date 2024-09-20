@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Send } from 'lucide-react';
 
 const AskBlair = () => {
   const [question, setQuestion] = useState('');
@@ -12,24 +13,30 @@ const AskBlair = () => {
     setQuestion('');
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div className="bg-white rounded-lg shadow p-6">
-      <form onSubmit={handleSubmit} className="mb-4">
-        <div className="flex">
-          <input
-            type="text"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Ask Blair anything about the recruiting process..."
-            className="flex-grow p-3 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-          />
-          <button
-            type="submit"
-            className="bg-purple-600 text-white px-6 py-3 rounded-r-lg hover:bg-purple-700 transition duration-300"
-          >
-            Ask
-          </button>
-        </div>
+      <form onSubmit={handleSubmit} className="mb-4 relative">
+        <textarea
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Ask Blair anything about the recruiting process..."
+          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 min-h-[150px] resize-none pr-12"
+        />
+        <button
+          type="submit"
+          className="absolute bottom-3 right-3 text-purple-600 hover:text-purple-800 transition-all duration-300 hover:scale-110"
+          aria-label="Send question"
+        >
+          <Send size={24} />
+        </button>
       </form>
       {answer && (
         <div className="mt-4 p-4 bg-purple-50 rounded-lg">
