@@ -2,9 +2,11 @@ import React from 'react';
 
 const SocialMediaTracker = () => {
   const socialPosts = [
-    { id: 1, school: 'University A', content: 'Check out our new football facilities!', platform: 'Twitter' },
-    { id: 2, school: 'College B', content: 'Congratulations to our graduating seniors!', platform: 'Instagram' },
-    { id: 3, school: 'Institute C', content: 'Join us for the upcoming game day!', platform: 'Facebook' },
+    { id: 1, school: 'Cornell University', content: 'Check out our new football facilities!', platform: 'Twitter' },
+    { id: 2, school: 'Tufts University', content: 'Congratulations to our graduating seniors!', platform: 'Instagram' },
+    { id: 3, school: 'Dartmouth College', content: 'Join us for the upcoming game day!', platform: 'Facebook' },
+    { id: 4, school: 'Union College', content: 'New research opportunities available for undergrads!', platform: 'LinkedIn' },
+    { id: 5, school: 'Brown University', content: 'Our basketball team made it to the finals!', platform: 'Twitter' },
   ];
 
   return (
