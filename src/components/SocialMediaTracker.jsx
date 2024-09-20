@@ -12,14 +12,14 @@ const SocialMediaTracker = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % (socialPosts.length - 1));
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % socialPosts.length);
     }, 5000);
 
     return () => clearInterval(timer);
   }, [socialPosts.length]);
 
   return (
-    <div className="bg-white rounded-lg shadow p-4 h-full overflow-hidden flex flex-col">
+    <div className="bg-white rounded-lg shadow p-4 h-full flex flex-col">
       <div className="flex-grow overflow-y-auto">
         {socialPosts.slice(currentIndex, currentIndex + 2).map((post) => (
           <div key={post.id} className="mb-4 p-3 border rounded hover:bg-purple-50">

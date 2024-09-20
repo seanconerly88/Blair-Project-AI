@@ -10,13 +10,13 @@ const Index = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div className="flex flex-col">
           <h2 className="text-2xl font-semibold mb-4 text-purple-700">My List</h2>
-          <div className="flex-grow">
+          <div className="flex-grow h-[calc(100vh-20rem)]">
             <TopTenList />
           </div>
         </div>
         <div className="flex flex-col">
           <h2 className="text-2xl font-semibold mb-4 text-purple-700">Social Radar</h2>
-          <div className="flex-grow" style={{ height: 'calc(100vh - 16rem)' }}>
+          <div className="flex-grow h-[calc(100vh-20rem)]">
             <SocialMediaTracker />
           </div>
         </div>
