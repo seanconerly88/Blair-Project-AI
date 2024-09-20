@@ -51,25 +51,31 @@ const TopTenList = () => {
           {(provided) => (
             <ul {...provided.droppableProps} ref={provided.innerRef} className="mb-4">
               {schools.map((school, index) => (
-                <React.Fragment key={school.id}>
+                <li key={school.id} className="mb-2">
                   <Draggable draggableId={school.id} index={index}>
                     {(provided) => (
-                      <li
+                      <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        className="p-4 border-b last:border-b-0 hover:bg-purple-100 cursor-move"
+                        className="p-4 bg-purple-100 rounded-lg cursor-move"
                         onClick={() => handleSchoolClick(school)}
                       >
                         {index + 1}. {school.name}
-                      </li>
+                      </div>
                     )}
                   </Draggable>
-                  {selectedSchool && selectedSchool.id === school.id && (
-                    <li className="p-4 bg-purple-100 rounded-lg mt-2 mb-2">
-                      <h3 className="font-semibold mb-2 text-purple-800">{selectedSchool.name} Notes</h3>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      selectedSchool && selectedSchool.id === school.id
+                        ? 'max-h-96 opacity-100 mt-2'
+                        : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="p-4 bg-purple-50 rounded-lg">
+                      <h3 className="font-semibold mb-2 text-purple-800">{school.name} Notes</h3>
                       <ul className="mb-4">
-                        {selectedSchool.notes.map((note) => (
+                        {school.notes.map((note) => (
                           <li key={note.id} className="mb-2 p-2 bg-white rounded">{note.text}</li>
                         ))}
                       </ul>
@@ -88,9 +94,9 @@ const TopTenList = () => {
                           Add Note
                         </button>
                       </div>
-                    </li>
-                  )}
-                </React.Fragment>
+                    </div>
+                  </div>
+                </li>
               ))}
               {provided.placeholder}
             </ul>
