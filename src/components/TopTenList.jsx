@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import StatusIcon from './StatusIcon';
 
 const TopTenList = () => {
   const [schools, setSchools] = useState([
-    { id: 'school1', name: 'University A', notes: [] },
-    { id: 'school2', name: 'College B', notes: [] },
-    { id: 'school3', name: 'Institute C', notes: [] },
-    { id: 'school4', name: 'University D', notes: [] },
-    { id: 'school5', name: 'College E', notes: [] },
+    { id: 'school1', name: 'University A', notes: [], offer: false, officialInvite: false, visit: false },
+    { id: 'school2', name: 'College B', notes: [], offer: false, officialInvite: false, visit: false },
+    { id: 'school3', name: 'Institute C', notes: [], offer: false, officialInvite: false, visit: false },
+    { id: 'school4', name: 'University D', notes: [], offer: false, officialInvite: false, visit: false },
+    { id: 'school5', name: 'College E', notes: [], offer: false, officialInvite: false, visit: false },
   ]);
 
   const [selectedSchool, setSelectedSchool] = useState(null);
@@ -15,11 +16,9 @@ const TopTenList = () => {
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
-
     const items = Array.from(schools);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
-
     setSchools(items);
   };
 
@@ -44,6 +43,12 @@ const TopTenList = () => {
     }
   };
 
+  const toggleStatus = (schoolId, status) => {
+    setSchools(schools.map(school => 
+      school.id === schoolId ? { ...school, [status]: !school[status] } : school
+    ));
+  };
+
   return (
     <div className="bg-white rounded-lg shadow p-4">
       <DragDropContext onDragEnd={onDragEnd}>
@@ -58,10 +63,28 @@ const TopTenList = () => {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        className="p-4 bg-purple-100 rounded-lg cursor-move"
-                        onClick={() => handleSchoolClick(school)}
+                        className="p-4 bg-purple-100 rounded-lg cursor-move flex items-center justify-between"
                       >
-                        {index + 1}. {school.name}
+                        <div onClick={() => handleSchoolClick(school)}>
+                          {index + 1}. {school.name}
+                        </div>
+                        <div className="flex space-x-2">
+                          <StatusIcon
+                            active={school.offer}
+                            onClick={() => toggleStatus(school.id, 'offer')}
+                            title="Offer"
+                          />
+                          <StatusIcon
+                            active={school.officialInvite}
+                            onClick={() => toggleStatus(school.id, 'officialInvite')}
+                            title="Official Invite"
+                          />
+                          <StatusIcon
+                            active={school.visit}
+                            onClick={() => toggleStatus(school.id, 'visit')}
+                            title="Visit"
+                          />
+                        </div>
                       </div>
                     )}
                   </Draggable>
