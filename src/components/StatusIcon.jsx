@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Home, Football } from 'lucide-react';
+import { FileText, Home, Footprints } from 'lucide-react';
 
 const StatusIcon = ({ type, active, onClick }) => {
   const iconProps = {
@@ -12,7 +12,7 @@ const StatusIcon = ({ type, active, onClick }) => {
   const IconComponent = {
     offer: FileText,
     officialInvite: Home,
-    visit: Football,
+    visit: Footprints,
   }[type];
 
   return (
