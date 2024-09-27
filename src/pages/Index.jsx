@@ -2,6 +2,7 @@ import React from 'react';
 import TopTenList from '../components/TopTenList';
 import SocialMediaTracker from '../components/SocialMediaTracker';
 import AskBlair from '../components/AskBlair';
+import CoachConnect from '../components/CoachConnect';
 
 const Index = () => {
   return (
@@ -16,14 +17,17 @@ const Index = () => {
         </div>
         <div className="flex flex-col">
           <h2 className="text-2xl font-semibold mb-4 text-purple-700">Social Radar</h2>
-          <div className="h-[350px]"> {/* Adjusted height */}
+          <div className="h-[350px]">
             <SocialMediaTracker />
           </div>
         </div>
       </div>
-      <div>
+      <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 text-purple-700">Ask Blair</h2>
         <AskBlair />
+      </div>
+      <div>
+        <CoachConnect />
       </div>
     </div>
   );
