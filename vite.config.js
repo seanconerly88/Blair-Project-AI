@@ -5,6 +5,7 @@ import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/Blair-Project-AI/', // Add this line
   server: {
     host: "::",
     port: "8080",
